@@ -38,6 +38,17 @@ $images = $comment->getImages();
 <?php echo op_url_cmd(nl2br($comment->getBody())) ?>
 </p>
 </div>
+<!--Like Plugin -->
+<div class="like" style="display: none;">
+<span class="like-wrapper" data-like-id="<?php echo $comment->getId() ?>" data-like-target="t" member-id="<?php echo $comment->member_id ?>">
+<span class="like-post">いいね！</span>
+<span class="like-cancel">いいね！を取り消す&nbsp;</span>
+<span class="like-you">あなたが「いいね！」と言っています。</span><br />
+<a class="like-list" href="#likeModal" data-toggle="modal"></a>
+<div class="like-list-member"></div>
+<span class="like-friend-list"></span>
+</span>
+</div>
 </dd>
 </dl>
 <?php endforeach; ?>
@@ -47,3 +58,23 @@ $images = $comment->getImages();
 </div>
 </div>
 <?php endif; ?>
+
+<script id="LikelistTemplate" type="text/x-jquery-tmpl">
+<table>
+<tr style="padding: 2px;">
+<td style="width: 48px; padding: 2px;"><a href="${profile_url}"><img src="${profile_image}" width="48"></a></td>
+<td style="padding: 2px;"><a href="${profile_url}">${name}</a></td>
+</tr>
+</table>
+</script>
+
+<div id="likeModal" class="modal hide">
+  <div class="modal-header">
+    <h1>「いいね！」と言っている人</h1>
+  </div>
+  <div class="like-modal-body">
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn close" data-dismiss="modal" aria-hidden="true">閉じる</a>
+  </div>
+</div>
